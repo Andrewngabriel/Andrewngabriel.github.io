@@ -11,6 +11,10 @@ br {
     padding-bottom: 7.5px;
 }
 
+.white {
+    color: white;
+}
+
 p {
     font-weight: 100;
     font-size: 18px;
