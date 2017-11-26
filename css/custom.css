@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto:300,400');
+@import url('https://fonts.googleapis.com/css?family=Roboto:100,300');
 
 html,body {
     width:100%;
@@ -6,15 +6,43 @@ html,body {
     font-family: 'Roboto', sans-serif;
 }
 
+br {
+    padding-top: 7.5px;
+    padding-bottom: 7.5px;
+}
+
 p {
-    font-size:18px;
-    line-height:2;
+    font-weight: 100;
+    font-size: 18px;
+    line-height: 2em;
+}
+
+h1 {
+    font-weight: 300;
+    font-size: 42px;
+    line-height: 1em;
+}
+
+h2 {
+    font-weight: 300;
+    font-size: 36px;
+    line-height: 1em;
+}
+
+h3 {
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 1em;
 }
 
 #logo {
     margin:0;
     padding-top:0;
     height:3em;
+}
+
+.profile-img {
+    padding: 20px;
 }
 
 .nav>li>a {
@@ -105,7 +133,7 @@ header .header-content .header-content-inner p {
 .navbar-default .navbar-header .navbar-brand { color:yellowgreen; }
 .navbar-default .nav>li>a { color:#222; }
 .navbar-default .nav>li.active>a { 
-    color:yellowgreen!important;
+    color:rgb(187, 187, 187)!important;
     background-color:transparent;
 }
 
@@ -138,12 +166,13 @@ a:focus {
 }
 
 .section-heading {
-    margin-top: 0;
-    margin-bottom: 20px;
+    margin-top: 1em;
+    margin-bottom: 1em;
 }
 
 .intro {
-    padding: 70px 0;
+    padding-top: 20px;
+    padding-bottom: 50px;
 }
 
 .profile-img {
@@ -152,13 +181,15 @@ a:focus {
 }
 
 .experience {
-    padding: 70px 0;
-    color: white;
-    background-color: rgb(167, 167, 167); 
+    padding-top: 1em;
+    padding-bottom: 3em;
+    background-color: rgb(234, 234, 234);
+    color: rgb(107, 107, 107);
 }
 
 .portfolio {
-    padding: 70px 0;
+    padding-top: 1em;
+    padding-bottom: 2em;
 }
 
 .content-2 {
@@ -201,15 +232,15 @@ a:focus {
 }
 
 .item-1 {
-	background-color: #1C1E20;
+	background-color: rgb(129, 129, 129);
 }
 	
 .item-2 {
-    background-color: #25282B;
+    background-color: rgb(184, 184, 184);
 }
 	
 .item-3 {
-    background-color: #2A2D30;
+    background-color: rgb(207, 207, 207);
 }
 		
 .item-1,
@@ -221,7 +252,7 @@ a:focus {
 
 .page-footer .contact {
 	padding: 50px 0;
-	background-color: #79ACD8;
+	background-color: rgb(138, 169, 194);
 	color: #fff;
 	}
 
@@ -247,9 +278,7 @@ a:focus {
     text-decoration: none;
 }
 
-.experience-item {
-    border-right: 2px solid #202325; 
-}
+/* .experience-item { border-right: 1px solid #929292; } */
 
 .text-light {
     color: rgba(255,255,255,.7);
@@ -273,12 +302,12 @@ a:focus {
 
 .navbar-default .nav > li>a:hover,
 .navbar-default .nav>li>a:focus:hover {
-    color: yellowgreen;
+    color:rgb(187, 187, 187)!important;
 }
 
 .navbar-default .nav > li.active>a,
 .navbar-default .nav>li.active>a:focus {
-    color: yellowgreen!important;
+    color:rgb(187, 187, 187)!important;
     background-color: transparent;
 }
 
