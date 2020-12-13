@@ -1,0 +1,68 @@
+header {
+  background: $color__navy;
+
+  nav {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 1.5rem;
+    max-width: 700px;
+    margin: 0 auto;
+
+    ul {
+      white-space: unset;
+      padding: 0;
+      margin: 0;
+
+      li {
+        display: inline-block;
+        list-style: none;
+      }
+    }
+
+    .nav {
+      &__logo {
+        display: block;
+        font-family: $font__marker;
+        font-size: 2rem;
+        color: white;
+        text-decoration: none;
+        width: 100%;
+        margin-bottom: 0.8rem;
+      }
+
+      &__social {
+        display: block;
+        width: 100%;
+        margin-bottom: 0.8rem;
+      }
+
+      &__social-link {
+        margin-right: 0.8rem;
+        transition: 0.2s ease-out;
+
+        svg {
+          max-width: 1.3rem;
+        }
+
+        &:hover {
+          transition: 0.2s ease-in;
+          opacity: 0.5;
+        }
+      }
+
+      &__menu-link {
+        font-size: 1.2rem;
+        text-decoration: none;
+        text-transform: capitalize;
+        color: white;
+        margin-right: 1.5rem;
+        transition: 0.2s ease-out;
+
+        &:hover {
+          transition: 0.2s ease-in;
+          opacity: 0.5;
+        }
+      }
+    }
+  }
+}

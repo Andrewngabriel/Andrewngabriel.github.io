@@ -1,0 +1,50 @@
+---
+layout: default
+---
+
+<p>Coming soon...</p>
+
+{% if paginator.posts %}
+<section class="blog-posts">
+  <ul class="blog-posts__list">
+    {% for page in paginator.posts %}
+    <li class="blog-posts__list-item">
+      <article class="blog-posts__article">
+        <h2>
+          <a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a>
+        </h2>
+        {{ page.excerpt | truncatewords: 60 }}
+        <a href="{{ site.baseurl }}{{ page.url }}">
+          Read More {% include icons/_arrow_right.html %}
+        </a>
+      </article>
+    </li>
+    {% endfor %}
+  </ul>
+  {% include post-pagination.html %}
+</section>
+{% else %}
+<section class="blog-posts">
+  <ul class="blog-posts__list">
+    {% for page in site.posts %}
+    <li class="blog-posts__list-item">
+      <article class="blog-posts__article">
+        <h2 class="blog-posts__article-title">
+          <a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a>
+        </h2>
+        <span class="blog-posts__article-meta">
+          {{ page.date | date: "%B %d, %Y" }}
+        </span>
+        {{ page.excerpt | truncatewords: 60 }}
+        <a
+          class="blog-posts__article-read-more"
+          href="{{ site.baseurl }}{{ page.url }}"
+        >
+          Read More {% include icons/_arrow_right.html %}
+        </a>
+      </article>
+    </li>
+    {% endfor %}
+  </ul>
+</section>
+{% endif %}

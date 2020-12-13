@@ -1,0 +1,40 @@
+$c: ".blog-posts";
+
+#{$c} {
+  &__list {
+    list-style: none;
+    padding: 0;
+  }
+
+  &__article-title {
+    a {
+      color: $color__navy;
+      text-decoration: none;
+
+      &:hover {
+        opacity: 0.8;
+        transition: 0.2s ease-in;
+      }
+    }
+  }
+
+  &__article-read-more {
+    display: block;
+    color: $color__navy;
+    text-decoration: none;
+    font-size: 1.2rem;
+
+    svg {
+      max-width: 1.3rem;
+      vertical-align: bottom;
+      transition: 0.2s ease-out;
+    }
+
+    &:hover {
+      svg {
+        margin-left: 0.5rem;
+        transition: 0.2s ease-in;
+      }
+    }
+  }
+}
