@@ -1,32 +1,34 @@
-<script>
-  window.location = "https://github.com/Andrewngabriel"
-</script>
+<header class="header">
+  <nav class="nav">
+    <a href="/" class="nav__logo">AG</a>
 
-<header>
-  <nav>
-    <a href="/" class="nav__logo">Andrew Gabriel</a>
-    <ul class="nav__social">
-      <li class="nav__social-list-item">
-        <a href="{{ site.github }}" class="nav__social-link">
-          {% include icons/_github.html %}
-        </a>
+    <ul class="nav__menu">
+      <li class="nav__menu-item">
+        <a class="nav__link" href="/">Home</a>
       </li>
-      <li class="nav__social-list-item">
-        <a href="{{ site.twitter }}" class="nav__social-link">
-          {% include icons/_twitter.html %}
-        </a>
+      <li class="nav__menu-item">
+        <a class="nav__link" href="/blog">Blog</a>
+      </li>
+      <li class="nav__menu-item">
+        <a class="nav__link" href="/contact">Contact</a>
       </li>
     </ul>
 
-    <ul class="nav__menu">
-      <li class="nav__menu-list-item">
-        <a class="nav__menu-link" href="/services">Services</a>
+    <ul class="nav__social">
+      <li class="nav__social-item">
+        <a href="{{ site.github }}" class="nav__social-link" aria-label="GitHub">
+          {% include icons/_github.html %}
+        </a>
       </li>
-      <li class="nav__menu-list-item">
-        <a class="nav__menu-link" href="/blog">Blog</a>
+      <li class="nav__social-item">
+        <a href="{{ site.linkedin }}" class="nav__social-link" aria-label="LinkedIn">
+          {% include icons/_linkedin.html %}
+        </a>
       </li>
-      <li class="nav__menu-list-item">
-        <a class="nav__menu-link" href="/contact">Contact</a>
+      <li class="nav__social-item">
+        <a href="{{ site.twitter }}" class="nav__social-link" aria-label="Twitter">
+          {% include icons/_twitter.html %}
+        </a>
       </li>
     </ul>
   </nav>

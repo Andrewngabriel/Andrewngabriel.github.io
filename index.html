@@ -3,25 +3,62 @@ layout: page
 title: Home
 ---
 
-<div class="intro">
-  <img src="assets/personal.jpg" alt="Andrew Gabriel" class="intro__img" />
-  <div class="intro__content">
-    <h4 class="intro__heading">
-      👋 I'm Andrew, and I am a software developer based in NYC
-    </h4>
-    <p class="intro__desc">
-      I help businesses improve everyday processes to be efficient, save money,
-      and scale easily. Below you can see the services I offer and how I can
-      help!
+<section class="hero">
+  <div class="hero__content">
+    <h1 class="hero__title">Andrew Gabriel</h1>
+    <p class="hero__subtitle">Software Developer based in NYC</p>
+    <p class="hero__description">
+      Building efficient, scalable solutions for web and mobile platforms.
+      Helping businesses streamline processes and grow.
     </p>
   </div>
-</div>
+</section>
 
-{% include services.html %}
+<section class="skills">
+  <h2 class="section-title">Core Competencies</h2>
 
-<p>
-  If you would like to discuss a potential project that I may be able to work
-  on, feel free to email me at
-  <a href="mailto:Andrew@andrewtechful.com">Andrew@andrewtechful.com</a>. You
-  can also DM on <a href="//twitter.com/alphangolf" target="_blank">Twitter</a>.
-</p>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <h3 class="skill-card__title">Web Development</h3>
+      <ul class="skill-card__list">
+        <li>React, Vue.js, Next.js</li>
+        <li>HTML5, CSS3, JavaScript (ES6+)</li>
+        <li>Node.js, Express</li>
+        <li>PostgreSQL, SQL</li>
+        <li>Shopify, WordPress, Prismic, Hubspot</li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <h3 class="skill-card__title">Mobile Development</h3>
+      <ul class="skill-card__list">
+        <li>Cross-platform Development</li>
+        <li>React Native, Flutter</li>
+        <li>iOS & Android</li>
+        <li>Mobile-first Design</li>
+      </ul>
+    </div>
+
+    <div class="skill-card">
+      <h3 class="skill-card__title">Services</h3>
+      <ul class="skill-card__list">
+        <li>Full-stack Development</li>
+        <li>API Design & Integration</li>
+        <li>Database Architecture</li>
+        <li>Performance Optimization</li>
+        <li>Technical Consulting</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2 class="section-title">Let's Work Together</h2>
+  <p class="cta__text">
+    Interested in discussing a project? I'd love to hear from you.
+  </p>
+  <div class="cta__links">
+    <a href="mailto:andrew@andrewtechful.com" class="btn btn-primary">Email Me</a>
+    <a href="/contact" class="btn btn-secondary">Contact Info</a>
+  </div>
+</section>
