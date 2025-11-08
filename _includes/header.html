@@ -1,26 +1,19 @@
-<script>
-  window.location = "https://github.com/Andrewngabriel"
-</script>
-
 <header>
   <nav>
     <a href="/" class="nav__logo">Andrew Gabriel</a>
-    <ul class="nav__social">
-      <li class="nav__social-list-item">
-        <a href="{{ site.github }}" class="nav__social-link">
-          {% include icons/_github.html %}
-        </a>
-      </li>
-      <li class="nav__social-list-item">
-        <a href="{{ site.twitter }}" class="nav__social-link">
-          {% include icons/_twitter.html %}
-        </a>
-      </li>
-    </ul>
 
-    <ul class="nav__menu">
+    <button class="nav__toggle" id="navToggle" aria-label="Toggle navigation">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <ul class="nav__menu" id="navMenu">
       <li class="nav__menu-list-item">
-        <a class="nav__menu-link" href="/services">Services</a>
+        <a class="nav__menu-link" href="/">Home</a>
+      </li>
+      <li class="nav__menu-list-item">
+        <a class="nav__menu-link" href="/projects">Projects</a>
       </li>
       <li class="nav__menu-list-item">
         <a class="nav__menu-link" href="/blog">Blog</a>
@@ -28,6 +21,44 @@
       <li class="nav__menu-list-item">
         <a class="nav__menu-link" href="/contact">Contact</a>
       </li>
+      <li class="nav__social">
+        <a href="{{ site.github }}" class="nav__social-link" target="_blank" rel="noopener" aria-label="GitHub">
+          {% include icons/_github.html %}
+        </a>
+        <a href="{{ site.linkedin }}" class="nav__social-link" target="_blank" rel="noopener" aria-label="LinkedIn">
+          {% include icons/_linkedin.html %}
+        </a>
+        <a href="{{ site.twitter }}" class="nav__social-link" target="_blank" rel="noopener" aria-label="Twitter">
+          {% include icons/_twitter.html %}
+        </a>
+      </li>
     </ul>
   </nav>
 </header>
+
+<script>
+  // Mobile menu toggle
+  const navToggle = document.getElementById('navToggle');
+  const navMenu = document.getElementById('navMenu');
+
+  if (navToggle && navMenu) {
+    navToggle.addEventListener('click', function() {
+      navMenu.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(event) {
+      if (!navToggle.contains(event.target) && !navMenu.contains(event.target)) {
+        navMenu.classList.remove('active');
+      }
+    });
+
+    // Close menu when clicking a link
+    const navLinks = navMenu.querySelectorAll('.nav__menu-link');
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+      });
+    });
+  }
+</script>
