@@ -2,49 +2,40 @@
 layout: default
 ---
 
-<p>Coming soon...</p>
+<div class="container">
+  <section class="blog-posts">
+    <h1 class="text-center">Blog</h1>
+    <p class="text-center" style="max-width: 600px; margin: 0 auto;">
+      Thoughts, tutorials, and insights about software development, technology, and more.
+    </p>
 
-{% if paginator.posts %}
-<section class="blog-posts">
-  <ul class="blog-posts__list">
-    {% for page in paginator.posts %}
-    <li class="blog-posts__list-item">
-      <article class="blog-posts__article">
-        <h2>
-          <a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a>
-        </h2>
-        {{ page.excerpt | truncatewords: 60 }}
-        <a href="{{ site.baseurl }}{{ page.url }}">
-          Read More {% include icons/_arrow_right.html %}
-        </a>
-      </article>
-    </li>
-    {% endfor %}
-  </ul>
-  {% include post-pagination.html %}
-</section>
-{% else %}
-<section class="blog-posts">
-  <ul class="blog-posts__list">
-    {% for page in site.posts %}
-    <li class="blog-posts__list-item">
-      <article class="blog-posts__article">
-        <h2 class="blog-posts__article-title">
-          <a href="{{ site.baseurl }}{{ page.url }}">{{ page.title }}</a>
-        </h2>
-        <span class="blog-posts__article-meta">
-          {{ page.date | date: "%B %d, %Y" }}
-        </span>
-        {{ page.excerpt | truncatewords: 60 }}
-        <a
-          class="blog-posts__article-read-more"
-          href="{{ site.baseurl }}{{ page.url }}"
-        >
-          Read More {% include icons/_arrow_right.html %}
-        </a>
-      </article>
-    </li>
-    {% endfor %}
-  </ul>
-</section>
-{% endif %}
+    {% if site.posts.size > 0 %}
+    <ul class="blog-posts__list">
+      {% for post in site.posts %}
+      <li class="blog-posts__list-item">
+        <article class="blog-posts__article">
+          <h2 class="blog-posts__article-title">
+            <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a>
+          </h2>
+          <span class="blog-posts__article-meta">
+            {{ post.date | date: "%B %d, %Y" }}
+          </span>
+          <div>
+            {{ post.excerpt | truncatewords: 40 }}
+          </div>
+          <a class="blog-posts__article-read-more" href="{{ site.baseurl }}{{ post.url }}">
+            Read More {% include icons/_arrow_right.html %}
+          </a>
+        </article>
+      </li>
+      {% endfor %}
+    </ul>
+    {% else %}
+    <div style="text-align: center; padding: var(--space-2xl) 0;">
+      <p style="color: var(--color-text-light); font-size: 1.25rem;">
+        No blog posts yet. Check back soon!
+      </p>
+    </div>
+    {% endif %}
+  </section>
+</div>

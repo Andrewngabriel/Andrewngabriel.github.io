@@ -3,25 +3,34 @@ layout: page
 title: Home
 ---
 
-<div class="intro">
-  <img src="assets/personal.jpg" alt="Andrew Gabriel" class="intro__img" />
-  <div class="intro__content">
-    <h4 class="intro__heading">
-      👋 I'm Andrew, and I am a software developer based in NYC
-    </h4>
-    <p class="intro__desc">
-      I help businesses improve everyday processes to be efficient, save money,
-      and scale easily. Below you can see the services I offer and how I can
-      help!
+<section class="hero">
+  <div class="container">
+    <img src="assets/personal.jpg" alt="Andrew Gabriel" class="hero__image" />
+    <h1 class="hero__title">Hi, I'm Andrew Gabriel</h1>
+    <p class="hero__subtitle">
+      Software developer based in NYC. I help businesses improve everyday processes to be efficient, save money, and scale easily.
+    </p>
+    <div style="margin-top: 2rem;">
+      <a href="/projects" class="hero__cta">View My Work</a>
+      <a href="/contact" class="hero__cta" style="background: transparent; color: var(--color-secondary); border: 2px solid var(--color-secondary); margin-left: 1rem;">Get In Touch</a>
+    </div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="container">
+    <h2 class="text-center">What I Do</h2>
+    {% include services.html %}
+  </div>
+</section>
+
+<section class="container" style="padding: 3rem 0;">
+  <div style="text-align: center; max-width: 600px; margin: 0 auto;">
+    <h2>Let's Work Together</h2>
+    <p>
+      If you would like to discuss a potential project, feel free to email me at
+      <a href="mailto:{{ site.email }}">{{ site.email }}</a> or reach out on
+      <a href="{{ site.twitter }}" target="_blank">Twitter</a>.
     </p>
   </div>
-</div>
-
-{% include services.html %}
-
-<p>
-  If you would like to discuss a potential project that I may be able to work
-  on, feel free to email me at
-  <a href="mailto:Andrew@andrewtechful.com">Andrew@andrewtechful.com</a>. You
-  can also DM on <a href="//twitter.com/alphangolf" target="_blank">Twitter</a>.
-</p>
+</section>
