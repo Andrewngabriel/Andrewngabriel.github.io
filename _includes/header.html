@@ -1,33 +1,30 @@
-<script>
-  window.location = "https://github.com/Andrewngabriel"
-</script>
-
 <header>
   <nav>
     <a href="/" class="nav__logo">Andrew Gabriel</a>
-    <ul class="nav__social">
-      <li class="nav__social-list-item">
-        <a href="{{ site.github }}" class="nav__social-link">
-          {% include icons/_github.html %}
-        </a>
-      </li>
-      <li class="nav__social-list-item">
-        <a href="{{ site.twitter }}" class="nav__social-link">
-          {% include icons/_twitter.html %}
-        </a>
-      </li>
-    </ul>
 
-    <ul class="nav__menu">
-      <li class="nav__menu-list-item">
-        <a class="nav__menu-link" href="/services">Services</a>
-      </li>
-      <li class="nav__menu-list-item">
-        <a class="nav__menu-link" href="/blog">Blog</a>
-      </li>
-      <li class="nav__menu-list-item">
-        <a class="nav__menu-link" href="/contact">Contact</a>
-      </li>
-    </ul>
+    <div class="nav__right">
+      <ul class="nav__menu">
+        <li><a class="nav__menu-link" href="/blog">Writing</a></li>
+        <li><a class="nav__menu-link" href="#contact">Contact</a></li>
+      </ul>
+
+      <ul class="nav__social">
+        <li>
+          <a href="{{ site.github }}" class="nav__social-link" aria-label="GitHub" target="_blank" rel="noopener">
+            {% include icons/_github.html %}
+          </a>
+        </li>
+        <li>
+          <a href="{{ site.twitter }}" class="nav__social-link" aria-label="Twitter" target="_blank" rel="noopener">
+            {% include icons/_twitter.html %}
+          </a>
+        </li>
+        <li>
+          <a href="{{ site.linkedin }}" class="nav__social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
+            {% include icons/_linkedin.html %}
+          </a>
+        </li>
+      </ul>
+    </div>
   </nav>
 </header>

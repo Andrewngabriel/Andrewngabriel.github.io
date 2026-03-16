@@ -1,27 +1,343 @@
 ---
-layout: page
+layout: default
 title: Home
 ---
 
-<div class="intro">
-  <img src="assets/personal.jpg" alt="Andrew Gabriel" class="intro__img" />
-  <div class="intro__content">
-    <h4 class="intro__heading">
-      👋 I'm Andrew, and I am a software developer based in NYC
-    </h4>
-    <p class="intro__desc">
-      I help businesses improve everyday processes to be efficient, save money,
-      and scale easily. Below you can see the services I offer and how I can
-      help!
-    </p>
+<!-- Hero -->
+<section class="hero" data-animate>
+  <img src="assets/personal.jpg" alt="Andrew Gabriel" class="hero__avatar" />
+  <h1 class="hero__name">Andrew Gabriel</h1>
+  <p class="hero__bio">
+    Software Engineer at <a href="https://wbd.com" target="_blank" rel="noopener">Warner Bros. Discovery</a>,
+    building products for HBO Max and the broader WBD platform.
+    12+ years delivering end-to-end web and mobile solutions — from startups to global media.
+  </p>
+  <!-- <span class="hero__status">Open to freelance projects</span> -->
+</section>
+
+<!-- Brands marquee -->
+<div class="brands">
+  <p class="section-label brands__label">Brands I've worked with</p>
+  <div class="brands__viewport" aria-label="Companies I've worked with">
+    <div class="brands__track">
+      <!-- 4 copies ensures the track is always wider than the viewport for a true infinite feel -->
+      <img src="assets/logos/google-fiber.png"  alt="Google Fiber"                class="brands__logo brands__logo--png" />
+      <img src="assets/logos/novo-nordisk.svg"  alt="Novo Nordisk"                class="brands__logo" />
+      <img src="assets/logos/volkswagen.svg"    alt="Volkswagen Group of America" class="brands__logo" />
+      <!-- <img src="assets/logos/ea.svg"            alt="EA"                          class="brands__logo" /> -->
+
+      <img src="assets/logos/google-fiber.png"  alt="" aria-hidden="true" class="brands__logo brands__logo--png" />
+      <img src="assets/logos/novo-nordisk.svg"  alt="" aria-hidden="true" class="brands__logo" />
+      <img src="assets/logos/volkswagen.svg"    alt="" aria-hidden="true" class="brands__logo" />
+      <!-- <img src="assets/logos/ea.svg"            alt="" aria-hidden="true" class="brands__logo" /> -->
+
+      <img src="assets/logos/google-fiber.png"  alt="" aria-hidden="true" class="brands__logo brands__logo--png" />
+      <img src="assets/logos/novo-nordisk.svg"  alt="" aria-hidden="true" class="brands__logo" />
+      <img src="assets/logos/volkswagen.svg"    alt="" aria-hidden="true" class="brands__logo" />
+      <!-- <img src="assets/logos/ea.svg"            alt="" aria-hidden="true" class="brands__logo" /> -->
+
+      <img src="assets/logos/google-fiber.png"  alt="" aria-hidden="true" class="brands__logo brands__logo--png" />
+      <img src="assets/logos/novo-nordisk.svg"  alt="" aria-hidden="true" class="brands__logo" />
+      <img src="assets/logos/volkswagen.svg"    alt="" aria-hidden="true" class="brands__logo" />
+      <!-- <img src="assets/logos/ea.svg"            alt="" aria-hidden="true" class="brands__logo" /> -->
+    </div>
   </div>
 </div>
 
-{% include services.html %}
+<!-- Selected Work -->
+<section data-animate>
+  <span class="section-label">Selected Work</span>
 
-<p>
-  If you would like to discuss a potential project that I may be able to work
-  on, feel free to email me at
-  <a href="mailto:Andrew@andrewtechful.com">Andrew@andrewtechful.com</a>. You
-  can also DM on <a href="//twitter.com/alphangolf" target="_blank">Twitter</a>.
-</p>
+  <ul class="work-list" data-animate-stagger>
+
+    <li class="work-item">
+      <div class="work-item__left">
+        <span class="work-item__name">HBO Max &amp; WBD Platform</span>
+        <span class="work-item__desc">
+          Leading high-profile engineering initiatives at Warner Bros. Discovery,
+          directly impacting HBO Max across web, mobile, and TV platforms.
+        </span>
+        <div class="work-item__tags">
+          <span class="work-item__tag">TypeScript</span>
+          <span class="work-item__tag">React</span>
+          <span class="work-item__tag">AWS</span>
+        </div>
+      </div>
+      <span class="work-item__year">2021 — Now</span>
+    </li>
+
+    <li class="work-item">
+      <div class="work-item__left">
+        <span class="work-item__name">Brand &amp; Product Work at Red Antler</span>
+        <span class="work-item__desc">
+          Built web experiences for consumer brands at one of NYC's top brand
+          and product design studios.
+        </span>
+        <div class="work-item__tags">
+          <span class="work-item__tag">React</span>
+          <span class="work-item__tag">Next.js</span>
+          <span class="work-item__tag">Web Engineering</span>
+        </div>
+      </div>
+      <span class="work-item__year">2019 — 2021</span>
+    </li>
+
+    <li class="work-item">
+      <div class="work-item__left">
+        <span class="work-item__name">Wiki FM Radio</span>
+        <span class="work-item__desc">
+          Founded and built an online radio station streaming tech and house music
+          to over 50K monthly listeners globally.
+        </span>
+        <div class="work-item__tags">
+          <span class="work-item__tag">Founder</span>
+          <span class="work-item__tag">50K+ listeners</span>
+        </div>
+      </div>
+      <span class="work-item__year">2014 — 2016</span>
+    </li>
+
+    <li class="work-item">
+      <div class="work-item__left">
+        <span class="work-item__name">
+          <a href="{{ site.github }}" target="_blank" rel="noopener">Freelance &amp; Open Source</a>
+        </span>
+        <span class="work-item__desc">
+          12+ years of custom software for agencies, startups, and established businesses.
+          Top Rated Seller on Fiverr with a 4.9&#9733; rating.
+        </span>
+        <div class="work-item__tags">
+          <span class="work-item__tag">Various stacks</span>
+          <span class="work-item__tag">Top Rated Seller</span>
+        </div>
+      </div>
+      <span class="work-item__year">2013 — Now</span>
+    </li>
+
+  </ul>
+</section>
+
+<!-- Personal Projects -->
+<section data-animate>
+  <span class="section-label">Personal Projects</span>
+
+  <div class="project-grid" data-animate-stagger>
+
+    <a href="https://pachi.money" target="_blank" rel="noopener" class="project-card project-card--web">
+      <div class="project-card__header">
+        <div class="project-card__icon project-card__icon--text">P</div>
+        <div class="project-card__meta">
+          <span class="project-card__name">Pachi Money</span>
+          <span class="project-card__sub">Dividend Investing Tools</span>
+        </div>
+        <span class="project-card__arrow">↗</span>
+      </div>
+      <p class="project-card__desc">
+        Smart investment tools for dividend investors — analyze portfolios,
+        predict income, and track live market data.
+      </p>
+      <div class="project-card__preview">
+        <img src="assets/projects/pachi-screenshot.png" alt="Pachi Money screenshot" class="project-card__preview-img" />
+      </div>
+      <div class="project-card__footer">
+        <div class="project-card__tags">
+          <span class="work-item__tag">Web App</span>
+          <span class="work-item__tag">Next.js</span>
+          <span class="work-item__tag">Finance</span>
+        </div>
+        <span class="project-card__year">Ongoing</span>
+      </div>
+    </a>
+
+    <a href="https://apps.apple.com/us/app/auto-journal-dashcam-app/id1672878369"
+       target="_blank" rel="noopener" class="project-card">
+      <div class="project-card__header">
+        <img src="assets/projects/auto-journal-icon.jpg" alt="Auto Journal icon" class="project-card__icon" />
+        <div class="project-card__meta">
+          <span class="project-card__name">Auto Journal</span>
+          <span class="project-card__sub">Dashcam &amp; Trip Logger</span>
+        </div>
+        <span class="project-card__arrow">↗</span>
+      </div>
+      <p class="project-card__desc">
+        Automatic trip logging and dashcam app for iOS. Records drives, journals routes,
+        and keeps a personal history of every trip — hands-free.
+      </p>
+      <div class="project-card__screens">
+        <img src="assets/projects/auto-journal-screen1.png" alt="Auto Journal screenshot 1" class="project-card__screen" />
+        <img src="assets/projects/auto-journal-screen2.png" alt="Auto Journal screenshot 2" class="project-card__screen" />
+      </div>
+      <div class="project-card__footer">
+        <div class="project-card__tags">
+          <span class="work-item__tag">iOS</span>
+          <span class="work-item__tag">Swift</span>
+          <span class="work-item__tag">App Store</span>
+        </div>
+        <span class="project-card__year">2023</span>
+      </div>
+    </a>
+
+    <a href="https://apps.apple.com/gr/app/egy-fm-egyptian-radio/id1499210256"
+       target="_blank" rel="noopener" class="project-card">
+      <div class="project-card__header">
+        <img src="assets/projects/egyfm-icon.jpg" alt="Egy FM icon" class="project-card__icon" />
+        <div class="project-card__meta">
+          <span class="project-card__name">Egy FM</span>
+          <span class="project-card__sub">Egyptian Radio</span>
+        </div>
+        <span class="project-card__arrow">↗</span>
+      </div>
+      <p class="project-card__desc">
+        Stream live Egyptian FM radio stations from anywhere in the world.
+        Built for the diaspora community staying connected to home.
+      </p>
+      <div class="project-card__screens">
+        <img src="assets/projects/egyfm-screen1.png" alt="Egy FM screenshot 1" class="project-card__screen" />
+        <img src="assets/projects/egyfm-screen2.png" alt="Egy FM screenshot 2" class="project-card__screen" />
+      </div>
+      <div class="project-card__footer">
+        <div class="project-card__tags">
+          <span class="work-item__tag">iOS</span>
+          <span class="work-item__tag">Swift</span>
+          <span class="work-item__tag">App Store</span>
+        </div>
+        <span class="project-card__year">2020</span>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<!-- Experience -->
+<section data-animate>
+  <span class="section-label">Experience</span>
+
+  <ul class="experience-list" data-animate-stagger>
+
+    <li class="experience-item">
+      <div class="experience-item__logo">
+        <img src="assets/logos/wbd.svg" alt="Warner Bros. Discovery" />
+      </div>
+      <div class="experience-item__body">
+        <span class="experience-item__role">Software Engineer</span>
+        <span class="experience-item__period">2021 — Present</span>
+        <span class="experience-item__company">Warner Bros. Discovery</span>
+        <span class="experience-item__desc">
+          Leading initiatives across HBO Max and the WBD platform — web, mobile, and TV.
+          End-to-end ownership from architecture to deployment.
+        </span>
+      </div>
+    </li>
+
+    <li class="experience-item">
+      <div class="experience-item__logo experience-item__logo--png">
+        <img src="assets/logos/red-antler.png" alt="Red Antler" />
+      </div>
+      <div class="experience-item__body">
+        <span class="experience-item__role">Web Engineer</span>
+        <span class="experience-item__period">2019 — 2021</span>
+        <span class="experience-item__company">Red Antler</span>
+        <span class="experience-item__desc">
+          Built product and marketing experiences for consumer brands at NYC's leading
+          brand and product design studio.
+        </span>
+      </div>
+    </li>
+
+    <li class="experience-item">
+      <div class="experience-item__logo experience-item__logo--dark">
+        <img src="assets/logos/discovery.svg" alt="Discovery Inc" />
+      </div>
+      <div class="experience-item__body">
+        <span class="experience-item__role">Software Engineer</span>
+        <span class="experience-item__period">Jan — Aug 2019</span>
+        <span class="experience-item__company">Discovery Inc</span>
+        <span class="experience-item__desc">
+          Automation testing across Web, Mobile, and TV platforms. Built a Go-based
+          API testing proof-of-concept and set up an in-house Selenium grid for FireTV.
+          Tools: Appium, Selenium, Cucumber, Browserstack, Jenkins.
+        </span>
+      </div>
+    </li>
+
+    <li class="experience-item">
+      <div class="experience-item__logo experience-item__logo--dark">
+        <img src="assets/logos/fiverr.svg" alt="Fiverr" />
+      </div>
+      <div class="experience-item__body">
+        <span class="experience-item__role">Front-End Developer</span>
+        <span class="experience-item__period">2014 — 2018</span>
+        <span class="experience-item__company">Fiverr</span>
+        <span class="experience-item__desc">
+          Delivered web solutions for startups and enterprises. Earned Top Rated Seller
+          status with a 4.9&#9733; rating and was featured in Fiverr's marketing campaigns.
+          Organized community events at the Manhattan office.
+        </span>
+      </div>
+    </li>
+
+    <li class="experience-item">
+      <div class="experience-item__logo experience-item__logo--mono" style="--mono-bg: #1a1a2e; --mono-color: #fff;">WF</div>
+      <div class="experience-item__body">
+        <span class="experience-item__role">Founder</span>
+        <span class="experience-item__period">2014 — 2016</span>
+        <span class="experience-item__company">Wiki FM Radio</span>
+        <span class="experience-item__desc">
+          Built and operated an online radio station reaching 50K+ monthly listeners worldwide.
+        </span>
+      </div>
+    </li>
+
+    <li class="experience-item">
+      <div class="experience-item__logo experience-item__logo--mono" style="--mono-bg: #e8e8e4; --mono-color: #444;">SE</div>
+      <div class="experience-item__body">
+        <span class="experience-item__role">Software Engineer</span>
+        <span class="experience-item__period">2013 — Present</span>
+        <span class="experience-item__company">Self Employed</span>
+        <span class="experience-item__desc">
+          Custom software for businesses, agencies, and startups across a wide range of
+          stacks — concept to production.
+        </span>
+      </div>
+    </li>
+
+  </ul>
+</section>
+
+<!-- Stack -->
+<section data-animate>
+  <span class="section-label">Stack</span>
+
+  <div class="stack-grid" data-animate-stagger>
+    <div class="stack-row">
+      <span class="stack-row__label">Frontend</span>
+      <span class="stack-row__items">TypeScript, React, Vue.js, Next.js, HTML5, CSS3, JavaScript (ES6+)</span>
+    </div>
+    <div class="stack-row">
+      <span class="stack-row__label">Mobile</span>
+      <span class="stack-row__items">Flutter, React Native — Android &amp; iOS</span>
+    </div>
+    <div class="stack-row">
+      <span class="stack-row__label">Backend &amp; Data</span>
+      <span class="stack-row__items">Node.js, Go, PostgreSQL, SQL, REST APIs</span>
+    </div>
+    <div class="stack-row">
+      <span class="stack-row__label">Cloud &amp; Tooling</span>
+      <span class="stack-row__items">AWS, Jenkins, Selenium, Appium, Browserstack</span>
+    </div>
+    <div class="stack-row">
+      <span class="stack-row__label">Platforms</span>
+      <span class="stack-row__items">Shopify, WordPress, Squarespace, Prismic, Hubspot</span>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" data-animate>
+  <span class="section-label">Get in Touch</span>
+  <p class="contact-text">
+    Available for select freelance projects. If you're building something and need
+    an engineer, reach out at
+    <a href="mailto:andrew@andrewtechful.com">andrew@andrewtechful.com</a>
+  </p>
+</section>

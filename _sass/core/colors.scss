@@ -1,1 +1,32 @@
+// ─── Design Tokens — Light Mode ─────────────────────────────────────────────
+:root {
+  --color-bg:               #fafaf8;
+  --color-surface:          #f2f2ef;
+  --color-border:           rgba(0, 0, 0, 0.09);
+  --color-text:             #111110;
+  --color-text-secondary:   #6b6b69;
+  --color-text-tertiary:    #999997;
+  --color-accent:           #072540;
+  --color-accent-muted:     rgba(7, 37, 64, 0.08);
+  --color-link:             #072540;
+  --color-link-hover:       #0a3560;
+}
+
+// ─── Dark Mode ───────────────────────────────────────────────────────────────
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg:               #0e0e0c;
+    --color-surface:          #161614;
+    --color-border:           rgba(255, 255, 255, 0.09);
+    --color-text:             #f0efec;
+    --color-text-secondary:   #999896;
+    --color-text-tertiary:    #666462;
+    --color-accent:           #4a8fd6;
+    --color-accent-muted:     rgba(74, 143, 214, 0.1);
+    --color-link:             #4a8fd6;
+    --color-link-hover:       #6aa3e0;
+  }
+}
+
+// ─── Legacy SCSS variable (keep for partials that use it) ────────────────────
 $color__navy: #072540;

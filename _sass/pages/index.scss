@@ -1,32 +1,596 @@
-$c: ".intro";
+// ─── Brands Marquee ──────────────────────────────────────────────────────────
+// 4 sets of logos, animate by -25% (= exactly 1 set) for seamless infinite loop.
+// margin-right on each logo (not flex gap) ensures trailing space after the last
+// logo in each set, eliminating the jump at the loop boundary.
+$brands-gap: 4rem;
 
-#{$c} {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 4rem;
+@keyframes marquee-scroll {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-25%); }
+}
 
-  @include bp(small) {
-    flex-direction: row;
+.brands {
+  padding-block: 0.5rem 0.5rem;
+  margin-inline: -1.5rem;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+
+  &__label {
+    padding-inline: 1.5rem;
+    margin-bottom: 0.75rem;
   }
 
-  &__img {
+  &__viewport {
     position: relative;
-    max-width: 12rem;
-    border-radius: 50%;
-  }
+    overflow: hidden;
 
-  &__content {
-    @include bp(small) {
-      margin-left: 2rem;
+    // Fade edges
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      width: 3rem;
+      height: 100%;
+      z-index: 2;
+      pointer-events: none;
+    }
+
+    &::before {
+      left: 0;
+      background: linear-gradient(to right, var(--color-bg), transparent);
+    }
+
+    &::after {
+      right: 0;
+      background: linear-gradient(to left, var(--color-bg), transparent);
     }
   }
 
-  &__heading {
-    font-size: 1.5rem;
+  &__track {
+    display: flex;
+    align-items: center;
+    width: max-content;
+    animation: marquee-scroll 28s linear infinite;
+
+    &:hover {
+      animation-play-state: paused;
+    }
+  }
+
+  &__logo {
+    // margin-right creates uniform spacing INCLUDING after the last item,
+    // so the loop boundary has the same gap as every other item transition.
+    height: 1.75rem;
+    width: auto;
+    margin-right: $brands-gap;
+    flex-shrink: 0;
+    opacity: 0.35;
+    filter: grayscale(1);
+    transition: opacity 0.3s ease, filter 0.3s ease;
+
+    &:hover {
+      opacity: 0.8;
+      filter: grayscale(0);
+    }
+  }
+
+  // PNG logos with white backgrounds:
+  // - Light mode: multiply removes the white bg so only the logo shows through.
+  // - Height is taller since it's a wide wordmark (needs more height to match visual weight of icon badges).
+  &__logo--png {
+    mix-blend-mode: multiply;
+    height: 4rem;
+  }
+}
+
+// In dark mode the logos have dark fills — invert so they appear light on dark bg
+@media (prefers-color-scheme: dark) {
+  .brands__logo {
+    filter: grayscale(1) invert(1);
+    opacity: 0.5;
+
+    &:hover {
+      filter: grayscale(1) invert(1);
+      opacity: 0.9;
+    }
+  }
+
+  // PNG logos in dark mode:
+  // invert(1) flips white bg → black (matches dark page bg, effectively invisible)
+  // and turns the colored logo text to mid-grays — then render normally (no blend mode).
+  .brands__logo--png {
+    filter: invert(1) grayscale(1);
+    mix-blend-mode: normal;
+    opacity: 0.65;
+
+    &:hover {
+      filter: invert(1) grayscale(0.2);
+      opacity: 1;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brands__track {
+    animation: none;
+  }
+}
+
+// ─── Hero ────────────────────────────────────────────────────────────────────
+.hero {
+  padding-block: 3rem 2.25rem;
+
+  &__avatar {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center top;
+    margin-bottom: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  &__name {
+    font-size: var(--text-xl);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  &__bio {
+    font-size: var(--text-md);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-normal);
+    max-width: 440px;
+
+    a {
+      color: var(--color-link);
+      text-underline-offset: 3px;
+      text-decoration: underline;
+      text-decoration-color: var(--color-border);
+      transition:
+        text-decoration-color 0.2s ease,
+        color 0.2s ease;
+
+      &:hover {
+        color: var(--color-link-hover);
+        text-decoration-color: currentColor;
+      }
+    }
+  }
+
+  &__status {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 1.25rem;
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+
+    &::before {
+      content: "";
+      display: inline-block;
+      width: 0.45rem;
+      height: 0.45rem;
+      border-radius: 50%;
+      background: #3a9d5d;
+      box-shadow: 0 0 0 2px rgba(58, 157, 93, 0.25);
+      animation: pulse-dot 2.5s ease-in-out infinite;
+    }
+  }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 2px rgba(58, 157, 93, 0.25); }
+  50%       { box-shadow: 0 0 0 4px rgba(58, 157, 93, 0.1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero__status::before { animation: none; }
+}
+
+// ─── Work / Projects ─────────────────────────────────────────────────────────
+.work-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.work-item {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  gap: 1rem;
+  padding: 0.875rem 0;
+  border-bottom: 1px solid var(--color-border);
+  cursor: default;
+
+  &:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  &__name {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: 1.3;
+
+    a {
+      color: inherit;
+      text-underline-offset: 3px;
+      transition: color 0.2s ease;
+
+      &:hover {
+        color: var(--color-link);
+        text-decoration: underline;
+        text-decoration-color: var(--color-accent-muted);
+      }
+    }
   }
 
   &__desc {
-    font-size: 1.3rem;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-normal);
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-top: 0.4rem;
+  }
+
+  &__tag {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 4px;
+    padding: 0.1rem 0.45rem;
+    line-height: 1.6;
+  }
+
+  &__year {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    align-self: start;
+    padding-top: 0.2rem;
+  }
+}
+
+// ─── Project Cards ───────────────────────────────────────────────────────────
+.project-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+
+  @include bp-down(small) {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+  background: var(--color-surface);
+  color: inherit;
+  text-decoration: none;
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.15s ease;
+  cursor: pointer;
+
+  &:hover {
+    border-color: rgba(0, 0, 0, 0.18);
+    background: var(--color-bg);
+    transform: translateY(-1px);
+
+    .project-card__arrow {
+      opacity: 1;
+      transform: translate(1px, -1px);
+    }
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  &__icon {
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 8px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border: 1px solid var(--color-border);
+
+    &--text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #072540;
+      color: #fff;
+      font-size: var(--text-base);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  &__meta {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    min-width: 0;
+  }
+
+  &__name {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__sub {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__arrow {
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+    opacity: 0.5;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    flex-shrink: 0;
+  }
+
+  &__desc {
+    font-size: var(--text-xs);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin: 0;
+    flex: 1;
+  }
+
+  // iPhone screenshots: side-by-side, cropped to show top portion
+  &__screens {
+    display: flex;
+    gap: 0.4rem;
+    border-radius: 6px;
+    overflow: hidden;
+    height: 9rem;
+  }
+
+  &__screen {
+    flex: 1;
+    width: 0;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 4px;
+  }
+
+  // Web screenshot: full-width, cropped landscape
+  &__preview {
+    border-radius: 6px;
+    overflow: hidden;
+    height: 8rem;
+    border: 1px solid var(--color-border);
+  }
+
+  &__preview-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top left;
+  }
+
+  &__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  &__year {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  // Web card spans full width
+  &--web {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  .project-card {
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+    }
+
+    &__icon--text {
+      background: #4a8fd6;
+    }
+  }
+}
+
+// ─── Experience ──────────────────────────────────────────────────────────────
+.experience-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.experience-item {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+
+  &__logo {
+    width: 2.25rem;
+    height: 2.25rem;
+    border-radius: 7px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 0.1rem;
+
+    img {
+      width: 1.35rem;
+      height: 1.35rem;
+      object-fit: contain;
+    }
+
+    &--mono {
+      background: var(--mono-bg, var(--color-surface));
+      color: var(--mono-color, var(--color-text-secondary));
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      border: none;
+    }
+  }
+
+  &__body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.2rem 1rem;
+    min-width: 0;
+  }
+
+  &__role {
+    font-size: var(--text-base);
+    font-weight: 600;
+    color: var(--color-text);
+    grid-column: 1;
+    line-height: 1.3;
+  }
+
+  &__period {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+    align-self: center;
+    grid-column: 2;
+    grid-row: 1;
+  }
+
+  &__company {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    grid-column: 1 / -1;
+  }
+
+  &__desc {
+    font-size: var(--text-sm);
+    color: var(--color-text-tertiary);
+    line-height: var(--leading-normal);
+    grid-column: 1 / -1;
+    margin-top: 0.1rem;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  // Dark-fill SVGs (Discovery, Fiverr) — invert so they appear light on dark bg
+  .experience-item__logo--dark img {
+    filter: invert(1) grayscale(1);
+    opacity: 0.75;
+  }
+
+  // PNG logos with white bg — invert flips white→black (invisible) and icon→light
+  .experience-item__logo--png img {
+    filter: invert(1);
+    opacity: 0.8;
+  }
+
+  .experience-item__logo--mono {
+    filter: brightness(0.85);
+  }
+}
+
+// ─── Stack ───────────────────────────────────────────────────────────────────
+.stack-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.stack-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+
+  &__label {
+    font-size: var(--text-xs);
+    color: var(--color-text-tertiary);
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  &__items {
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+    line-height: var(--leading-normal);
+  }
+}
+
+// ─── Contact ─────────────────────────────────────────────────────────────────
+.contact-text {
+  font-size: var(--text-md);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-loose);
+  max-width: 420px;
+
+  a {
+    color: var(--color-link);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    text-decoration-color: var(--color-accent-muted);
+    transition:
+      color 0.2s ease,
+      text-decoration-color 0.2s ease;
+
+    &:hover {
+      color: var(--color-link-hover);
+      text-decoration-color: currentColor;
+    }
   }
 }

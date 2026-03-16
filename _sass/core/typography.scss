@@ -1,20 +1,21 @@
-$font__hind: "Hind Vadodara", sans-serif;
+$font__hind:   "Hind Vadodara", system-ui, -apple-system, sans-serif;
 $font__marker: "Permanent Marker", cursive;
+$font__mono:   "SF Mono", "Fira Mono", "Fira Code", Consolas, monospace;
 
 @font-face {
   font-family: "Permanent Marker";
   src: url("../assets/fonts/PermanentMarker-Regular.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
-  font-stretch: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Hind Vadodara";
   src: url("../assets/fonts/HindVadodara-Light.ttf") format("truetype");
-  font-weight: normal;
+  font-weight: 300;
   font-style: normal;
-  font-stretch: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -22,13 +23,28 @@ $font__marker: "Permanent Marker", cursive;
   src: url("../assets/fonts/HindVadodara-Regular.ttf") format("truetype");
   font-weight: 400;
   font-style: normal;
-  font-stretch: normal;
+  font-display: swap;
 }
 
 @font-face {
   font-family: "Hind Vadodara";
   src: url("../assets/fonts/HindVadodara-SemiBold.ttf") format("truetype");
-  font-weight: bold;
+  font-weight: 600;
   font-style: normal;
-  font-stretch: normal;
+  font-display: swap;
+}
+
+// ─── Type scale ──────────────────────────────────────────────────────────────
+:root {
+  --text-xs:   0.75rem;   // 12px
+  --text-sm:   0.875rem;  // 14px
+  --text-base: 1rem;      // 16px
+  --text-md:   1.125rem;  // 18px
+  --text-lg:   1.375rem;  // 22px
+  --text-xl:   1.75rem;   // 28px
+  --text-2xl:  2.25rem;   // 36px
+
+  --leading-tight:  1.2;
+  --leading-normal: 1.6;
+  --leading-loose:  1.8;
 }
